@@ -732,6 +732,9 @@ async def get_cpwp_course_content(session: aiohttp.ClientSession, headers: Dict[
                     elif "https://tb-video.classplusapp.com" in url_val and url_val.endswith('.jpg'):
                         video_id = url_val.split('/')[-1].split('.')[0]
                         url_val = f'https://tb-video.classplusapp.com/{video_id}/master.m3u8'
+                    elif "https://ali-cdn-wl-assets.classplus.co/production/single/awtbs/" in url_val and url_val.endswith('.pdf'):
+                        video_id = url_val.split('/')[-1].split('.')[0]
+                        url_val = f'https://ali-cdn-wl-assets.classplus.co/production/single/awtbs/{video_id}.pdf'
 
                     if url_val.endswith(("master.m3u8", "playlist.m3u8")) and url_val not in fetched_urls:
                         fetched_urls.add(url_val)
